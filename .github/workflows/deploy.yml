@@ -1,0 +1,40 @@
+name: "Deploy"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_REGION: eu-west-1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      
+      - name: NPM Install
+        run: npm ci
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+  
+      - name: CDK Deploy
+        run: npm run cdk:deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ env.AWS_REGION }}
