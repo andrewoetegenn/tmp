@@ -1,10 +1,10 @@
-import './App.css';
+import "./App.css";
+import { Sidebar } from "./components/Sidebar";
 
 const App = () => (
-    <>
-        <h1>Personal Finance App</h1>
-        <p>This application displays personal finannce information</p>
-    </>
-)
+  <>
+    <Sidebar />
+  </>
+);
 
 export default App;
