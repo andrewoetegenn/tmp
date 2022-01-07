@@ -1,23 +1,63 @@
 import "./Sidebar.css";
+import {
+  FaHome,
+  FaPoundSign,
+  FaCoins,
+  FaMoneyBill,
+  FaChartLine,
+  FaLandmark,
+} from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 
 const sidebarItems = [
-  "Summary",
-  "Income",
-  "Expenses",
-  "Savings",
-  "Investments",
-  "Pensions",
-  "Debts",
+  {
+    path: "/",
+    name: "Dashboard",
+    icon: <FaHome />,
+  },
+  {
+    path: "/income",
+    name: "Income",
+    icon: <FaPoundSign />,
+  },
+  {
+    path: "/expenses",
+    name: "Expenses",
+    icon: <FaCoins />,
+  },
+  {
+    path: "/savings",
+    name: "Savings",
+    icon: <FaMoneyBill />,
+  },
+  {
+    path: "/investments",
+    name: "Investments",
+    icon: <FaChartLine />,
+  },
+  {
+    path: "/debts",
+    name: "Debts",
+    icon: <FaLandmark />,
+  },
 ];
 
 const Sidebar = () => {
+  const location = useLocation();
+
   return (
     <div className="sidebar">
-      <h1 className="sidebar-heading">Personal Finance App</h1>
       <ul className="sidebar-items">
         {sidebarItems.map((item) => (
-          <ul className="sidebar-item" onClick={() => alert(item)}>
-            {item}
+          <ul
+            className={`sidebar-item${
+              location.pathname === item.path ? " active" : ""
+            }`}
+          >
+            <Link to={item.path}>
+              {item.icon}
+              <span className="sidebar-item-name">{item.name}</span>
+            </Link>
           </ul>
         ))}
       </ul>
