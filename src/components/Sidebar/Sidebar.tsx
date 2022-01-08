@@ -6,8 +6,11 @@ import {
   FaMoneyBill,
   FaChartLine,
   FaLandmark,
+  FaChartPie,
+  FaBars,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const sidebarItems = [
   {
@@ -44,10 +47,20 @@ const sidebarItems = [
 
 const Sidebar = () => {
   const location = useLocation();
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className="sidebar">
-      <ul className="sidebar-items">
+      <div className="sidebar-header">
+        <FaChartPie />
+        <h1>Personal Finance</h1>
+      </div>
+      <div className="sidebar-toggle">
+        <i onClick={() => setShowMenu(!showMenu)}>
+          <FaBars />
+        </i>
+      </div>
+      <ul className={`sidebar-items${showMenu ? " show" : ""}`}>
         {sidebarItems.map((item) => (
           <ul
             className={`sidebar-item${
