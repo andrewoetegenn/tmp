@@ -1,26 +1,19 @@
 import "./App.css";
-import { Sidebar } from "./components/Sidebar";
 import { Routes, Route } from "react-router-dom";
 import { Income } from "./pages/Income";
+import { Layout } from "./components/Layout";
 
 const App = () => (
-  <div className="wrapper">
-    <Sidebar />
+  <Layout>
     <Routes>
-      <Route path="" element={<Page name="Dashboard" />} />
+      <Route path="" element={<h2>Dashboard</h2>} />
       <Route path="income" element={<Income />} />
-      <Route path="expenses" element={<Page name="Expenses" />} />
-      <Route path="savings" element={<Page name="Savings" />} />
-      <Route path="investments" element={<Page name="Investments" />} />
-      <Route path="debts" element={<Page name="Debts" />} />
+      <Route path="expenses" element={<h2>Expenses</h2>} />
+      <Route path="savings" element={<h2>Savings</h2>} />
+      <Route path="investments" element={<h2>Investments</h2>} />
+      <Route path="debts" element={<h2>Debts</h2>} />
     </Routes>
-  </div>
-);
-
-const Page = ({ name }: { name: string }) => (
-  <div className="page">
-    <h2>{name}</h2>
-  </div>
+  </Layout>
 );
 
 export default App;

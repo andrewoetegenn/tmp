@@ -62,7 +62,8 @@ const Sidebar = () => {
       </div>
       <ul className={`sidebar-items${showMenu ? " show" : ""}`}>
         {sidebarItems.map((item) => (
-          <ul
+          <li
+            key={item.name}
             className={`sidebar-item${
               location.pathname === item.path ? " active" : ""
             }`}
@@ -71,7 +72,7 @@ const Sidebar = () => {
               {item.icon}
               <span className="sidebar-item-name">{item.name}</span>
             </Link>
-          </ul>
+          </li>
         ))}
       </ul>
     </div>

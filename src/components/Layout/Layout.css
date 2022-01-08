@@ -1,0 +1,14 @@
+.layout {
+  display: flex;
+}
+
+.page-wrapper {
+  width: 100%;
+  padding: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+}
