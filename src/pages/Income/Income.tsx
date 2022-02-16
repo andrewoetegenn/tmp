@@ -33,33 +33,10 @@ const Income = () => {
     },
   ];
 
-  const rows = [
-    {
-      description: "Salary (Andrew)",
-      amount: 3000,
-      expenses: 1500,
-      savings: 500,
-      remaining: 1000,
-    },
-    {
-      description: "Salary (Bex)",
-      amount: 2500,
-      expenses: 1000,
-      savings: 500,
-      remaining: 1000,
-    },
-    {
-      amount: 5500,
-      expenses: 2500,
-      savings: 1000,
-      remaining: 2000,
-    },
-  ];
-
   return (
     <>
       <h2>Income</h2>
-      <Table columns={columns} rows={rows} />
+      <Table columns={columns} rows={[]} />
     </>
   );
 };
